@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 class Category(models.Model):
@@ -8,8 +9,12 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'categories'
+    
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('main:category_items', args=[self.slug])
 
 class Vehicle(models.Model):
     category = models.ForeignKey(Category, related_name="vehicle", on_delete=models.CASCADE)
@@ -28,4 +33,7 @@ class Vehicle(models.Model):
     
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('main:vehicle_detail', args=[self.slug])
     

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Wheely{% endblock title %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'main/css/landing.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  {% block head %}{% endblock head %}
+</head>
+<body>
+    <nav class="header sticky-top">
+        <div class="container">
+            <a href="#" class="brand-name" title="Wheely"><span>Wheely</span></a>
+            <ul class="header-nav">
+                <li class="navi-link" title="Home"><a href="#">Home</a></li>
+                <li class="navi-link" title="Pricing"><a href="#">Pricing</a></li>
+                <li class="navi-link" title="About Us"><a href="#">About Us</a></li>
+                <li class="navi-link" title="Contact Us"><a href="#">Contact Us</a></li>    
+            </ul> 
+            <form class="search-bar-nav mx-auto">
+                <input class="input" type="text" placeholder="Search" id="search-item" title="Search"><button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+            </form>
+            
+            <div class="account-alerts ml-auto">
+                  <a href="#" class="sign-in-btn ml-3"><i class="fa fa-sign-in mr-2"></i>Sign In</a>
+                
+
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock content %}
+    <div class="feedback">
+        <button class="feedback-float"><i class="fa fa-commenting mr-2"></i>Feedback</button>
+        <div class="feedback-container">
+
+        </div>
+    </div>
+
+
+    <footer>
+        <svg xmlns="http://www.w3.org/2000/svg" class="fill-light-wrapper position-absolute mbr-z-index20" style="overflow: hidden;vertical-align: middle;" preserveAspectRatio="none" viewBox="0 0 1070 52">
+            <path d="M0,0S247,91,505,32c261.17-59.72,565-13,565-13V0Z"></path>
+        </svg>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-3">
+                    <h2>Wheely</h2>
+                    <p>© 2020 Wheely<br>All Rights Reserved</p>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3">
+                    <h4>Get In Touch</h4>
+                    <p>Address<br>City<br>State and Pincode</p>
+                    <p>info@example.com<br>+911234567890</p>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3">
+                    <h4>Information</h4>
+                    <a href="#">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Services</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3">
+                    <h4>Our Newsletter</h4>
+                    <p>Subscribe to our newsletter to get our news & deals delivered to your inbox!</p>
+                    <form class="newsletter">
+                        <input type="email" placeholder="Email Address" id="email">
+                        <button type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

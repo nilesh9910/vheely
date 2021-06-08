@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="car-list">
+        <div class="container">
+            <div class="greeting">
+                <h1>Rent Cars</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="row">
+            {% for vehicle in category_vehicles %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-img-top">
+                            <img src="{{vehicle.image.url}}">
+                        </div>
+                        <div class="details">
+                            <div class="card-body">
+                                <h4>{{vehicle.title}}</h4>
+                                <h6>₹499 per day</h6>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between border-top">
+                                <a href="cars-detail.html" class="detail-show border-right">Details</a>
+                                <a href="{{vehicle.get_absolute_url}}" class="rent-btn">Rent Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
