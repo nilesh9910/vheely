@@ -20,17 +20,21 @@
         <div class="container">
             <a href="#" class="brand-name" title="Wheely"><span>Wheely</span></a>
             <ul class="header-nav">
-                <li class="navi-link" title="Home"><a href="#">Home</a></li>
+                <li class="navi-link" title="Home"><a href="{% url 'main:index' %}">Home</a></li>
                 <li class="navi-link" title="Pricing"><a href="#">Pricing</a></li>
-                <li class="navi-link" title="About Us"><a href="#">About Us</a></li>
-                <li class="navi-link" title="Contact Us"><a href="#">Contact Us</a></li>    
+                <li class="navi-link" title="About Us"><a href="{% url 'main:about_us' %}">About Us</a></li>
+                <li class="navi-link" title="Contact Us"><a href="{% url 'main:contact_us' %}">Contact Us</a></li>    
             </ul> 
             <form class="search-bar-nav mx-auto">
                 <input class="input" type="text" placeholder="Search" id="search-item" title="Search"><button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
             </form>
             
             <div class="account-alerts ml-auto">
-                  <a href="#" class="sign-in-btn ml-3"><i class="fa fa-sign-in mr-2"></i>Sign In</a>
+                {% if user.is_authenticated %}
+                  <a href="{% url 'account:logout' %}" class="sign-in-btn ml-3"><i class="fa fa-sign-in mr-2"></i>Logout</a>
+                {% else %}
+                  <a href="{% url 'account:login' %}" class="sign-in-btn ml-3"><i class="fa fa-sign-in mr-2"></i>Sign In</a>
+                {% endif %}
                 
 
             </div>

@@ -1,0 +1,50 @@
+{% extends '../../main/base.html' %}
+{% load static %}
+{% block title %}Register{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+{% endblock head %}
+
+{% block content %}
+<section class="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mx-auto">
+                    <div class="login-card">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-6">
+                                <img src="{% static 'main/images/login-side-img.jpg' %}" class="w-100" style="height: 100%; object-fit: cover;min-height: 600px;">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="login-section">
+                                    <h3>Create an account</h3>
+                                    <p>It's free and only takes a minute.</p>
+                                    <form action="." method="POST">
+                                        {% csrf_token %}
+                                        {% if form.errors %}
+                                        <p>Please correct the following errors.</p>
+                                        {% for field in form %}
+                                        {% if field.errors %}
+                                        <div class="alert alert-primary" role="alert">
+                                        {{ field.label }}: {{ field.errors|striptags}}
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                        {{ form.user_name}}
+                                        {{ form.email }}
+                                        {{ form.password }}
+                                        {{ form.password2 }}
+                                        <button type="submit">Register</button><a href="{% url 'account:pwdreset' %}">Forgot password?</a>
+                                    </form>
+                                    <p class="text-center mt-3 pt-3 mb-2 border-top">Create an account</p>
+                                    <a href="{% url 'account:register' %}" class="register-btn text-center">Register now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

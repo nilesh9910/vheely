@@ -1,0 +1,159 @@
+{% extends 'main/base.html' %}
+{% block title %}Order Summary{% endblock title %}
+{% load static %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'basket/css/payment.css' %}">
+{% endblock head %}
+{% block content %}
+<section id="payment">
+        <div class="container">
+        </div>
+        <div class="row">
+            <div class="col-md-4 px-0">
+                <div class="invoice">
+                    <h5 class="pb-2"><b>Invoice for</b></h5>
+                    <div class="text-secondary mb-1">Josha Badal</div>
+                    <div class="text-secondary mb-1">Dahanukar Wadi, Bunder Pakhadi Road, Kandivli, Mumbai, Maharastra</div>
+                    <div class="text-secondary mb-1">400067</div>
+                    <div class="text-secondary mb-1">02228649931</div>
+                    <a href="#" class="review-details">Change</a>
+                </div>
+            </div>
+            <div class="col-md-8 px-3">
+                <div class="container checkout-box">
+                    <h4 class="border-bottom pb-2" style="font-size: 24px;"><b>Your Order</b></h4>
+                    <p class="text-secondary" style="font-size:18px"><span class="text-dark">Vehicle: </span>{{vehicle.title}}<br>
+                    <span class="text-dark">Price: </span>Rs. {{vehicle.price}}/km
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 px-0">
+            </div>
+            <div class="col-md-8 px-3">
+                <div class="container checkout-box">
+                    <h4 class="border-bottom pb-2" style="font-size: 24px;"><b>Order Information</b></h4>
+                    <form method='POST' class="checkout">
+                    {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" name="firstname" placeholder="First Name" id="name">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" name="middlename" placeholder="Middle Name" id="name">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" name="lastname" placeholder="Last Name" id="name">
+                            </div>
+                        </div>
+                        <label>Full Name</label>
+                        <input type="text" name="fullname" placeholder="Enter Your Name" id="name">
+                        
+                        <label>Address</label>
+                        <input type="text" name="address" placeholder="Enter Your Address" id="address">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>State</label>
+                                <select name="state">
+                                    <option value="Andaman">Andaman and Nicobar</option>
+                                    <option value="Andhra">Andhra Pradesh</option>
+                                    <option value="Arunachal">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadra">Dadra and Nagar Haveli</option>
+                                    <option value="Daman">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Uttar">Uttar Pradesh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal">Himachal Pradesh</option>
+                                    <option value="Jammu">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="West">West Bengal</option>
+                                    <option value="Madhya">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Orissa">Orissa</option>
+                                    <option value="Pondicherry">Pondicherry</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttarakhand (Uttaranchal">Uttarakhand (Uttaranchal)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Pincode</label>
+                                <input type="text" name="pincode" placeholder="Pincode" id="pincode">
+                            </div>
+                        </div>
+                        <label>Destination Address</label>
+                        <input type="text" name="dest_address" placeholder="Enter Your Address" id="address">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>State</label>
+                                <select name="dest_state">
+                                    <option value="Andaman">Andaman and Nicobar</option>
+                                    <option value="Andhra">Andhra Pradesh</option>
+                                    <option value="Arunachal">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadra">Dadra and Nagar Haveli</option>
+                                    <option value="Daman">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Uttar">Uttar Pradesh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal">Himachal Pradesh</option>
+                                    <option value="Jammu">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="West">West Bengal</option>
+                                    <option value="Madhya">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Orissa">Orissa</option>
+                                    <option value="Pondicherry">Pondicherry</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttarakhand (Uttaranchal">Uttarakhand (Uttaranchal)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Pincode</label>
+                                <input type="text" name="dest_pincode" placeholder="Pincode" id="pincode">
+                            </div>
+                        </div>
+                        <label>Phone</label>
+                        <input type="text" name ="phone" placeholder="Enter Your Phone Number" id="phone">
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

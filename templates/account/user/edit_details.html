@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+{% if user_form.is_valid %}
+<div class="alert alert-primary" role="alert">
+    Details Updated Successfully
+</div>
+{% else %}
+<h3>Change your details</h3>
+{% if user_form.errors %}
+<div class="alert alert-primary" role="alert">
+    Error: Please try again
+</div>
+{% endif %}
+<form  method="POST">
+{% csrf_token %}
+{{ user_form }}
+<input type="submit" value="Submit"> 
+</form>
+{% endif %}
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.urls import reverse
 
 # Create your models here.
@@ -18,7 +18,7 @@ class Category(models.Model):
 
 class Vehicle(models.Model):
     category = models.ForeignKey(Category, related_name="vehicle", on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User , related_name="vehicle_creator", on_delete=models.CASCADE)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL , related_name="vehicle_creator", on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description =models.TextField(blank=True)
     image = models.ImageField(upload_to='images/')
