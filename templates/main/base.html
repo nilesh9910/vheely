@@ -29,15 +29,28 @@
                 <input class="input" type="text" placeholder="Search" id="search-item" title="Search"><button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
             </form>
             
-            <div class="account-alerts ml-auto">
+            
                 {% if user.is_authenticated %}
-                  <a href="{% url 'account:logout' %}" class="sign-in-btn ml-3"><i class="fa fa-sign-in mr-2"></i>Logout</a>
+                  <div class="account-alerts ml-auto">
+                  <div class="account-logged account-dropdown">
+                      <img src="{% static 'main/images/profile-account-pic.jpg' %}" class="account-logged-pic">
+                        <span class="user-id-name">{{user.user_name}}</span>
+                        <div class="account-dropdown-content">
+                            <a href="#" class="dropdown-nav-link">My Orders</a>
+                            <a href="{% url 'account:editdetails' %}" class="dropdown-nav-link">Account Info.</a>
+                            <a href="#" class="dropdown-nav-link">Wishlist</a>
+                            <a href="{% url 'account:logout' %}" class="dropdown-nav-link logout"><span class="fa fa-sign-out mr-2"></span>Log Out</a>
+                        </div>
+                  </div>
+                </div>
                 {% else %}
+                <div class="account-alerts ml-auto">
                   <a href="{% url 'account:login' %}" class="sign-in-btn ml-3"><i class="fa fa-sign-in mr-2"></i>Sign In</a>
+                  </div>
                 {% endif %}
                 
 
-            </div>
+            
         </div>
     </nav>
     {% block content %}{% endblock content %}

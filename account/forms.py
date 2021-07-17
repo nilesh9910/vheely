@@ -13,12 +13,29 @@ class UserEditForm(forms.ModelForm):
     first_name = forms.CharField(label='First Name', min_length=4, max_length=50, widget=forms.TextInput(attrs={
         'class': 'form-control mb-3', 'placeholder': 'First Name', 'id': 'form-firstname'
         }))
+    phone_number = forms.CharField(label='Phone Number', min_length=10, max_length=10, widget=forms.TextInput(attrs={
+        'class': 'form-control mb-3', 'placeholder': 'Phone Number', 'id': 'form-phone'
+        }))
+    address_line_1 = forms.CharField(label='Address Line 1', max_length=150, widget=forms.TextInput(attrs={
+        'class': 'form-control mb-3', 'placeholder': 'Address Line 1', 'id': 'form-address-1'
+        }))
+    address_line_2 = forms.CharField(label='Address Line 2', max_length=150, widget=forms.TextInput(attrs={
+        'class': 'form-control mb-3', 'placeholder': 'Address Line 2', 'id': 'form-address-2'
+        }))
+    post_code = forms.CharField(label='Pin Code', max_length=10, widget=forms.TextInput(attrs={
+        'class': 'form-control mb-3', 'placeholder': 'Pin Code', 'id': 'form-pincode'
+        }))
+    town_city = forms.CharField(label='City', min_length=4, max_length=50, widget=forms.TextInput(attrs={
+        'class': 'form-control mb-3', 'placeholder': 'City', 'id': 'form-city'
+        }))
     class Meta:
         model = UserBase
-        fields = ('email','user_name','first_name')
+        fields = ('email','user_name','first_name','phone_number', 'address_line_1','address_line_2','post_code','town_city')
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        for key in self.fields:
+            self.fields[key].required = False 
         self.fields['user_name'].required = True
         self.fields['email'].required = True
 
